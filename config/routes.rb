@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "users/show"
   get "events/index"
   get "events/show"
   get "events/new"
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "events#index"
   resources :events
+  resources :users, only: [:show]
 end
