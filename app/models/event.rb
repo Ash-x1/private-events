@@ -7,4 +7,15 @@ class Event < ApplicationRecord
   has_many :attendees,
            through: :event_attendances,
            source: :attendee
+
+  # def self.past
+    # where("date < ?", Time.now)
+  # end
+
+  # def self.upcoming
+    # where("date > ?", Time.now)
+  # end
+
+  scope :past, -> { where("date < ?", Time.now) }
+  scope :upcoming, -> { where("date > ?", Time.now) }
 end
