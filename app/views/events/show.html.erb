@@ -16,6 +16,17 @@
 
 <% if user_signed_in? %>
   <%= button_to "Attend Event",
-        event_event_attendances_path(@event),
+        event_attendances_path(@event),
         method: :post %>
+<% end %>
+
+
+<% if current_user == @event.creator %>
+  <h3>Invite User</h3>
+
+  <%= form_with url: event_attendances_path(@event), method: :post do |f| %>
+    <%= select_tag :attendee_id,
+          options_from_collection_for_select(User.all, :id, :email) %>
+    <%= submit_tag "Invite" %>
+  <% end %>
 <% end %>
