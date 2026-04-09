@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "event_attendances/create"
   get "users/show"
   get "events/index"
   get "events/show"
@@ -20,4 +21,5 @@ Rails.application.routes.draw do
   root "events#index"
   resources :events
   resources :users, only: [:show]
+  resources :event_attendances, only: [:create]
 end

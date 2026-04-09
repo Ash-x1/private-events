@@ -8,3 +8,16 @@
 <% @user.created_events.each do |event| %>
   <p><%= link_to event.title, event %></p>
 <% end %>
+
+
+<h2>Upcoming Events</h2>
+
+<% @user.attended_events.where("date > ?", Time.now).each do |event| %>
+  <p><%= link_to event.title, event %></p>
+<% end %>
+
+<h2>Past Events</h2>
+
+<% @user.attended_events.where("date < ?", Time.now).each do |event| %>
+  <p><%= link_to event.title, event %></p>
+<% end %>
